@@ -39,3 +39,48 @@ GET
   - status: ERROR
   - data: pesan kesalahan
 
+UPLOAD
+* TUJUAN: untuk mengunggah file ke server
+* PARAMETER:
+  - PARAMETER1 : nama file
+  - PARAMETER2 : isi file dalam encoding base64
+* RESULT:
+- BERHASIL:
+  - status: OK
+  - data: pesan sukses
+- GAGAL:
+  - status: ERROR
+  - data: pesan kesalahan
+
+DELETE
+* TUJUAN: untuk menghapus file dari server
+* PARAMETER:
+  - PARAMETER1 : nama file
+* RESULT:
+- BERHASIL:
+  - status: OK
+  - data: pesan sukses
+- GAGAL:
+  - status: ERROR
+  - data: pesan kesalahan
+
+CATATAN:
+1. Untuk UPLOAD:
+   - File akan disimpan di folder 'files/'
+   - File yang sudah ada akan ditimpa
+   - Client harus mengencode file ke base64 sebelum dikirim
+
+2. Untuk DELETE:
+   - Hanya file di folder 'files/' yang bisa dihapus
+   - Tidak bisa menghapus folder
+
+3. Untuk GET:
+   - File akan disimpan di folder 'downloads/' di sisi client
+   - Folder downloads dibuat otomatis jika belum ada
+
+4. Error Handling:
+   - Pesan error menjelaskan penyebab kegagalan
+   - Contoh error:
+     * File tidak ditemukan
+     * Permission denied
+     * Request tidak valid
